@@ -22,13 +22,13 @@ struct AttributeList {
     usize count;
 };
 
-struct AttributeValue {
+union AttributeValue {
     f32 f;
     i64 i;
     char *s;
-    Tensor *t;
+    Tensor *tensor;
     AttributeList list;
-    void *g;
+    void *graph;
     DataType type;
 };
 
