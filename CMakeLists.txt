@@ -22,21 +22,23 @@ elseif(CMAKE_BUILD_TYPE STREQUAL "Release")
   add_compile_definitions(RELEASE)
 endif()
 
-file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c" "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+file(GLOB_RECURSE BIN_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+file(GLOB_RECURSE LIB_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c" "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp")
 
+list(REMOVE_ITEM LIB_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+
 add_library(${PROJECT_NAME}
-  ${SOURCES}
+  ${LIB_SOURCES}
   ${HEADERS}
 )
 
 add_executable(${PROJECT_NAME}-dev 
-  ${SOURCES} 
-  ${HEADERS}
+  ${BIN_SOURCES} 
 )
 
 target_link_libraries(${PROJECT_NAME}-dev PRIVATE
-  ${PROJECT_NAME} 
+  ${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} 
@@ -45,4 +47,17 @@ target_include_directories(${PROJECT_NAME}
     $<INSTALL_INTERFACE:include>
   PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+target_include_directories(${PROJECT_NAME}-dev
+  PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+add_custom_target(run
+  COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR}
+  COMMAND ${CMAKE_BINARY_DIR}/${PROJECT_NAME}-dev
+  DEPENDS ${PROJECT_NAME}-dev
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMENT "Building and running ${PROJECT_NAME}-dev"
 )

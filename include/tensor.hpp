@@ -43,3 +43,4 @@ struct Tensor {
 void serialize_tensor(FILE *file, const Tensor &tensor);
 void deserialize_tensor(FILE *file, Tensor &tensor);
 void free_tensor(Tensor &tensor);
+usize data_type_size(DataType type);

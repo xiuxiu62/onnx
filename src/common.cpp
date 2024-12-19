@@ -48,3 +48,19 @@ void deserialize_string_array(FILE *file, char **&data, u32 count) {
         deserialize_string(file, data[i]);
     }
 }
+
+char *duplicate_string(const char *str) {
+    if (!str) return NULL;
+    char *dup = (char *)malloc(strlen(str) + 1);
+    strcpy(dup, str);
+    return dup;
+}
+
+void *resize_array(void *arr, usize old_count, usize new_count, usize stride) {
+    void *new_arr = malloc(new_count * stride);
+    if (arr && old_count > 0) {
+        memcpy(new_arr, arr, old_count * stride);
+        free(arr);
+    }
+    return new_arr;
+}

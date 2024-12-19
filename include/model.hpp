@@ -15,10 +15,15 @@ struct Model {
     Graph graph;
 };
 
-// void serialize_model(Stream &stream, const Model &model);
-// void deserialize_model(Stream &stream, Model &model);
 bool serialize_model(const char *filename, const Model &model);
 bool deserialize_model(const char *filename, Model &model);
 void free_model(Model &model);
-// bool save_model(const char *filename, const Model &model);
-// bool load_model(const char *filename, Model &model);
+
+void create_model(Model &model, const char *version, const char *producer);
+Node &add_node(Model &model, const char *name, OpType type);
+bool remove_node(Model &model, const char *name);
+bool add_input(Node &node, const char *input_name);
+bool add_output(Node &node, const char *output_name);
+Attribute &add_attribute(Node &node, const char *name, AttributeType type);
+Tensor &add_tensor(Model &model, DataType type, const u64 *dims, u32 dim_count);
+bool remove_tensor(Model &model, usize index);
