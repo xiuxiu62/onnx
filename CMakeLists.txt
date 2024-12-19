@@ -25,9 +25,24 @@ endif()
 file(GLOB_RECURSE SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.c" "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
 file(GLOB_RECURSE HEADERS "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h" "${CMAKE_CURRENT_SOURCE_DIR}/include/*.hpp")
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+add_library(${PROJECT_NAME}
+  ${SOURCES}
+  ${HEADERS}
+)
 
-target_include_directories(${PROJECT_NAME}
+add_executable(${PROJECT_NAME}-dev 
+  ${SOURCES} 
+  ${HEADERS}
+)
+
+target_link_libraries(${PROJECT_NAME}-dev PRIVATE
+  ${PROJECT_NAME} 
+)
+
+target_include_directories(${PROJECT_NAME} 
+  PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+    $<INSTALL_INTERFACE:include>
   PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/include    
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
