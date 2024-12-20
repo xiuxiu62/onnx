@@ -1,6 +1,6 @@
 #pragma once
 
-#include "attribute.hpp"
+#include "onnx/attribute.hpp"
 #include "types.h"
 
 enum class OpType {

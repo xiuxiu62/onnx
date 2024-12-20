@@ -1,6 +1,6 @@
 #pragma once
 
-#include "tensor.hpp"
+#include "onnx/tensor.hpp"
 #include "types.h"
 
 enum class AttributeType {

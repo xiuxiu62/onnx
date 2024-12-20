@@ -1,6 +1,6 @@
 #pragma once
 
-#include "node.hpp"
+#include "onnx/node.hpp"
 #include "tensor.hpp"
 
 struct Graph {

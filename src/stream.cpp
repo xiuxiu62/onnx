@@ -1,4 +1,4 @@
-#include "stream.hpp"
+#include "onnx/stream.hpp"
 
 #include "file.h"
 #include "types.h"

@@ -1,8 +1,8 @@
-#include "node.hpp"
+#include "onnx/node.hpp"
 
-#include "attribute.hpp"
-#include "common.hpp"
 #include "io.hpp"
+#include "onnx/attribute.hpp"
+#include "onnx/common.hpp"
 
 #include <cstdlib>
 

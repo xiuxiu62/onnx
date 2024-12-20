@@ -1,9 +1,9 @@
-#include "model.hpp"
+#include "onnx/model.hpp"
 
-#include "common.hpp"
 #include "file.h"
 #include "io.hpp"
-#include "tensor.hpp"
+#include "onnx/common.hpp"
+#include "onnx/tensor.hpp"
 
 #include <cstring>
 

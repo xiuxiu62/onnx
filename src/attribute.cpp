@@ -1,8 +1,8 @@
-#include "attribute.hpp"
+#include "onnx/attribute.hpp"
 
-#include "common.hpp"
 #include "io.hpp"
-#include "tensor.hpp"
+#include "onnx/common.hpp"
+#include "onnx/tensor.hpp"
 
 #include <cstdlib>
 

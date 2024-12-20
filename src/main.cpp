@@ -1,5 +1,4 @@
-#include "logger.h"
-#include "model.hpp"
+#include "onnx/model.hpp"
 
 int main() {
     Model model;
@@ -16,7 +15,7 @@ int main() {
     free_model(model);
     Model model_2;
     deserialize_model("example.onnx", model_2);
-    info("%s", model_2.graph.nodes[0].input_names[0]);
+    // info("%s", model_2.graph.nodes[0].input_names[0]);
 
     return 0;
 }

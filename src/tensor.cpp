@@ -1,4 +1,4 @@
-#include "tensor.hpp"
+#include "onnx/tensor.hpp"
 
 #include "io.hpp"
 #include "types.h"
