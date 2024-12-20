@@ -140,11 +140,11 @@ Node &add_node(Model &model, const char *name, OpType type) {
     node.domain = duplicate_string(""); // Default empty domain
     node.doc_string = duplicate_string("");
     node.op_type = type;
-    node.input_names = NULL;
-    node.output_names = NULL;
+    node.input_names = nullptr;
+    node.output_names = nullptr;
     node.input_count = 0;
     node.output_count = 0;
-    node.attributes = NULL;
+    node.attributes = nullptr;
     node.attribute_count = 0;
 
     model.graph.node_count++;
